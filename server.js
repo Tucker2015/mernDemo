@@ -10,6 +10,8 @@ const routes = require('./routes/api')
 
 // const MONGODB_URI = 'mongodb+srv://kevtucker:Baggersb20@merntucker.risq0.mongodb.net/merntucker?retryWrites=true&w=majority'
 
+
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/merntucker', {
     useNewUrlParser: true,
     useUnifiedTopology: true
