@@ -5,6 +5,7 @@ import './App.css';
 class App extends React.Component {
 
   state = {
+    username: '',
     title: '',
     body: '',
     posts: []
@@ -34,6 +35,7 @@ class App extends React.Component {
   submit = (event) => {
     event.preventDefault();
     const payload = {
+      username: this.state.username,
       title: this.state.title,
       body: this.state.body
     };
@@ -55,6 +57,7 @@ class App extends React.Component {
 
   resetUserInputs = () => {
     this.setState({
+      username: '',
       title: '',
       body: ''
 
@@ -66,9 +69,20 @@ class App extends React.Component {
     if (!posts.length) return null;
 
     return posts.map((post, index) => (
-      <div key={index} className="blog-post__display">
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
+      <div key={index} className="card mt-2" style={{ width: "100%", maxWidth: "600px" }}>
+        <div className="card">
+          <div className="card-header" style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
+            {post.title}
+          </div>
+          <div className="card-body">
+            <h5 className="card-title">Author : {post.username}</h5>
+            <p className="card-text">{post.body}</p>
+            <div class="card-footer text-muted">
+              {post.date}
+            </div>
+          </div>
+        </div>
+
       </div>
     ));
   };
@@ -81,6 +95,14 @@ class App extends React.Component {
       <div className="app">
         <h1>Kevin's Blog</h1>
         <form onSubmit={this.submit}>
+          <div className="form-input">
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter Your Name"
+              value={this.state.username}
+              onChange={this.handleChange}
+            /></div>
           <div className="form-input">
             <input
               type="text"
@@ -102,7 +124,7 @@ class App extends React.Component {
 
             </textarea>
           </div>
-          <button>Submit</button>
+          <button className="btn-primary mb-1">Submit Post</button>
 
         </form>
         <div className="blog-post">
