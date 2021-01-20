@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-
+import NavBar from './components/NavBar';
 class App extends React.Component {
 
   state = {
@@ -92,41 +92,45 @@ class App extends React.Component {
     console.log('State: ', this.state);
 
     return (
-      <div className="app">
+
+      <div className="app mt-5">
+        <NavBar />
         <h1>Kevin's Blog</h1>
-        <form onSubmit={this.submit}>
-          <div className="form-input">
-            <input
-              type="text"
-              name="username"
-              placeholder="Enter Your Name"
-              value={this.state.username}
-              onChange={this.handleChange}
-            /></div>
-          <div className="form-input">
-            <input
-              type="text"
-              name="title"
-              placeholder="Enter Your Title"
-              value={this.state.title}
-              onChange={this.handleChange}
-            /></div>
-          <div className="form-input">
-            <textarea
-              placeholder="Enter your Blog Post"
-              name="body"
-              cols="30"
-              rows="10"
-              value={this.state.body}
-              onChange={this.handleChange}
+        <div className="mt-2" style={{ width: "100%", }}>
+          <form onSubmit={this.submit}>
+            <div className="form-input">
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter Your Name"
+                value={this.state.username}
+                onChange={this.handleChange}
+              /></div>
+            <div className="form-input">
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter Your Title"
+                value={this.state.title}
+                onChange={this.handleChange}
+              /></div>
+            <div className="form-input">
+              <textarea
+                placeholder="Enter your Blog Post"
+                name="body"
+                cols="30"
+                rows="10"
+                value={this.state.body}
+                onChange={this.handleChange}
 
-            >
+              >
 
-            </textarea>
-          </div>
-          <button className="btn-primary mb-1">Submit Post</button>
+              </textarea>
+            </div>
+            <button className="btn-primary mb-1">Submit Post</button>
 
-        </form>
+          </form>
+        </div>
         <div className="blog-post">
           {this.displayBlogPost(this.state.posts)}
         </div>
